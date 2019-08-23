@@ -1,6 +1,8 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
+  include ApplicationHelper
+
   # GET /locations
   # GET /locations.json
   def index
@@ -9,8 +11,27 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   # GET /locations/1.json
-  def show
+def show
+  if valid_location?(@location)
+
+    @buses = HTTParty.get('http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus')
+
+    @bus_count = 0
+
+    @nearby_buses = []
+
+    @buses.each do |bus|
+      if nearby?(@location.longitude, @location.latitude, 
+        bus["LONGITUDE"].to_f, bus["LATITUDE"].to_f)
+        @bus_count += 1
+        @nearby_buses.push(bus)
+      end
+    end
+    # @bus_count = @nearby_buses.length
+  else
+      redirect_to root_path, notice: "Location not found, try a new address."
   end
+end
 
   # GET /locations/new
   def new

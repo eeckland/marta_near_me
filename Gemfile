@@ -5,6 +5,9 @@ ruby '2.6.3'
 
 gem 'geocoder'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'httparty'
+gem 'jquery-rails'
+
 gem 'rails', '~> 6.0.0'
 
 # Use Puma as the app server
