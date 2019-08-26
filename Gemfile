@@ -7,6 +7,9 @@ gem 'geocoder'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'httparty'
 gem 'jquery-rails'
+gem 'figaro'
+gem 'font-awesome-rails'
+gem 'bootstrap-sass'
 
 gem 'rails', '~> 6.0.0'
 
