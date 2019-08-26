@@ -24,7 +24,7 @@
 
     <!-- Our Maps with Javascript-->
     <script>
-    $(document).ready(function (){
+    jQuery(document).ready(function (){
         function initialize(){
         var userCoords = new google.maps.LatLng(<%= @location.latitude %>,         <%= @location.longitude %>);
         var busCoords = new google.maps.LatLng(<%= bus["LATITUDE"] %>, <%= bus["LONGITUDE"] %>);
